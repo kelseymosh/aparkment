@@ -7,12 +7,15 @@ export const Form = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        fetch('http://localhost:4000/cars', {
+        console.log(event.target.make.value)
+        fetch('http://localhost:4000/residents', {
             method: 'POST',
-            headers: {'Content-Type': 'application/json'},
+            headers: {
+                'Content-Type': 'application/json'
+            },
             body: JSON.stringify({
-                make: make,
-                model: model
+                make: event.target.make.value,
+                model: event.target.model.value
             })
         })
         .then(response => response.json())
