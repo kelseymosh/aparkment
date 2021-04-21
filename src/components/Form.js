@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import classes from '@material-ui/core/TextField';
+import { FormContainer, StyledForm, StyledTextField } from '../styles/Form'
 
-
-export const Form = () => {
+const Form = () => {
     const [make, setMake] = useState('')
     const [model, setModel] = useState('')
 
@@ -22,14 +23,14 @@ export const Form = () => {
     }
 
     return (
-        <>
-            <form onSubmit={handleSubmit}>
-                <label>Make</label>
-                <input name="make" value={make} onChange={(event => setMake(event.target.value))} />
-                <label>Model</label>
-                <input name="model" value={model} onChange={(event => setModel(event.target.value))} />
+        <FormContainer>
+            <StyledForm onSubmit={handleSubmit} className={classes.root} noValidate autoComplete="off">
+                <StyledTextField id="standard-basic" label="Make" name="make" value={make} onChange={(event => setMake(event.target.value))} />
+                <StyledTextField id="standard-basic" label="Model" name="model" value={model} onChange={(event => setModel(event.target.value))} />
                 <input type="submit" />
-            </form>
-        </>
+            </StyledForm>
+        </FormContainer>
     )
 }
+
+export default Form
